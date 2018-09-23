@@ -1,8 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    {{ title }}!
+<div>
+  <h1 class="text-center">
+    {{ title }}
   </h1>
 </div>
-<app-place></app-place>
+<div class="row">
+    <nav class="navbar">
+      <ul class="nav">
+        <li class="nav-item p-2 bg-light rounded m-2">List of places</li>
+        <li class="nav-item p-2 bg-light rounded m-2">Add place</li>
+      </ul>
+    </nav>
+</div>
+<router-outlet></router-outlet>
 

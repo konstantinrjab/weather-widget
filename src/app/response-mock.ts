@@ -1,11 +1,10 @@
-import {Place} from './place';
-import {Weather} from './weather';
+import {Response} from './models/response.model';
 
-export const PLACES: Place[] = [
+export const RESPONSE: Response[] = [
   {
     coord: {
-      lon: 1,
-      lat: 1
+      lon: 44,
+      lat: 3
     },
     weather: [
       {

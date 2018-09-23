@@ -1,6 +1,6 @@
-import {Weather} from './weather';
+import {Weather} from './weather.model';
 
-export class Place {
+export class Response {
     coord: {
         lon: number
         lat: number
