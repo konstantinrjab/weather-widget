@@ -1,3 +1,23 @@
-<p>
-  place-add works!
-</p>
+<form #placeForm="ngForm" (ngSubmit)="saveTown(placeForm)">
+  <div class="card">
+    <div class="card-header">
+      Add place
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Town name</h5>
+      <div class="form-group">
+        <label for="townName" class="card-text">Add town below</label>
+        <input required type="text" id="townName" class="form-control"
+               [class.is-invalid]="townName.invalid && townName.touched"
+               [class.is-valid]="townName.valid && townName.touched"
+               [(ngModel)]="townNameModel" name="townName"
+               #townName="ngModel">
+        <div class="invalid-feedback d-block" *ngIf="townName.invalid && townName.touched">
+          Please choose a username.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="placeForm.invalid">Add</button>
+    </div>
+  </div>
+</form>
+Model: {{ placeForm.value | json }}

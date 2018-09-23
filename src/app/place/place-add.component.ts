@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-place-add',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./place-add.component.css']
 })
 export class PlaceAddComponent implements OnInit {
-
+  townNameModel;
   constructor() { }
 
   ngOnInit() {
   }
-
+  saveTown(placeForm: NgForm): void {
+    console.log(placeForm.value);
+  }
 }

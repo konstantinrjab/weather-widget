@@ -4,13 +4,15 @@
     {{ title }}
   </h1>
 </div>
-<div class="row">
     <nav class="navbar">
       <ul class="nav">
-        <li class="nav-item p-2 bg-light rounded m-2">List of places</li>
-        <li class="nav-item p-2 bg-light rounded m-2">Add place</li>
+        <li class="nav-item p-2 bg-light rounded m-2">
+          <a routerLink="/list">List of places</a>
+        </li>
+        <li class="nav-item p-2 bg-light rounded m-2">
+          <a routerLink="/add">Add place</a>
+        </li>
       </ul>
-    </nav>
-</div>
+</nav>
 <router-outlet></router-outlet>
 
