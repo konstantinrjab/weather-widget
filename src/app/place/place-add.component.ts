@@ -8,7 +8,7 @@ import {PlaceService} from '../place.service';
   styleUrls: ['./place-add.component.css']
 })
 export class PlaceAddComponent implements OnInit {
-  townNameModel;
+  protected townNameModel;
 
   constructor(private placeService: PlaceService) {
   }

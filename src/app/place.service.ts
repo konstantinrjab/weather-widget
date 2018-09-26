@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Town} from './models/town.model';
 import { HttpHeaders } from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import {catchError, tap} from 'rxjs/operators';
+import {catchError} from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -25,22 +25,22 @@ export class PlaceService {
   getTown(id: number): Observable<Town> {
     const url = `${this.API_URL}/towns/${id}`;
     return this.http.get<Town>(url).pipe(
-        catchError(this.handleError<Town>(`getHero id=${id}`))
+        catchError(this.handleError<Town>(`getTown id=${id}`))
     );
   }
   getTowns() {
-    return this.http.get(`${this.API_URL}/towns`);
+    return this.http.get(`${this.API_URL}/towns`).pipe(
+      catchError(this.handleError<Town>(`getTowns`))
+    );
   }
 
-  addTown(town: Town): Observable<Object> {
-    return this.http.post(`${this.API_URL}/towns`, town);
+  addTown(town: Town): Observable<Town> {
+    const url = `${this.API_URL}/towns`;
+    return this.http.post<Town>(url, town);
   }
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
+      console.error(error);
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };

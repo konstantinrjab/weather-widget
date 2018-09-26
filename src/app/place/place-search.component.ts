@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TOWNS } from '../town-mock';
 import {Town} from '../models/town.model';
 
 @Component({
@@ -8,17 +7,7 @@ import {Town} from '../models/town.model';
   styleUrls: ['./place-search.component.css']
 })
 export class PlaceSearchComponent implements OnInit {
-  towns: Town[] = [
-    {
-      name: 'London',
-    },
-    {
-      name: 'Lara',
-    },
-    {
-      name: 'Col'
-    }
-  ];
+
   constructor() { }
 
   ngOnInit() {
