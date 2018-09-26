@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {TOWNS} from '../town-mock';
+import {Component, OnInit} from '@angular/core';
 import {PlaceService} from '../place.service';
+import {Town} from '../models/town.model';
 
 @Component({
   selector: 'app-place-list',
@@ -8,15 +8,20 @@ import {PlaceService} from '../place.service';
   styleUrls: ['./place-list.component.css']
 })
 export class PlaceListComponent implements OnInit {
-  places = TOWNS;
+  private places;
 
-  constructor() { }
+  constructor(private placeService: PlaceService) {
+  }
 
   ngOnInit() {
-    // this.getTowns();
+    this.getTowns();
   }
-  // getTowns() {
-  //   this.PlaceService.getPlaces()
-  //       .subscribe(places => this.places = places);
-  // }
+
+  getTowns() {
+    this.placeService.getPlaces()
+        .subscribe((data: Town[]) => {
+          this.places = data;
+          console.log(data);
+        });
+  }
 }

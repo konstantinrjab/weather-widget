@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
+import {PlaceService} from '../place.service';
 
 @Component({
   selector: 'app-place-add',
@@ -8,11 +9,17 @@ import {NgForm} from '@angular/forms';
 })
 export class PlaceAddComponent implements OnInit {
   townNameModel;
-  constructor() { }
+
+  constructor(private placeService: PlaceService) {
+  }
 
   ngOnInit() {
   }
-  saveTown(placeForm: NgForm): void {
+
+  addTown(placeForm: NgForm) {
     console.log(placeForm.value);
+    this.placeService.addPlace(placeForm.value).subscribe((res) => {
+      console.log(res);
+    });
   }
 }
