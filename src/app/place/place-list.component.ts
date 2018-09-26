@@ -8,7 +8,7 @@ import {Town} from '../models/town.model';
   styleUrls: ['./place-list.component.css']
 })
 export class PlaceListComponent implements OnInit {
-  private places;
+  protected places;
 
   constructor(private placeService: PlaceService) {
   }
@@ -18,7 +18,7 @@ export class PlaceListComponent implements OnInit {
   }
 
   getTowns() {
-    this.placeService.getPlaces()
+    this.placeService.getTowns()
         .subscribe((data: Town[]) => {
           this.places = data;
           console.log(data);

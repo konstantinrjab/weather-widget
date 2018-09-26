@@ -13,7 +13,7 @@ import { PlaceService } from './place.service';
 
 const appRoutes: Routes = [
   {path: 'list', component: PlaceListComponent},
-  {path: 'place', component: PlaceComponent},
+  {path: 'place/:id', component: PlaceComponent},
   {path: 'add', component: PlaceAddComponent},
   {path: '', redirectTo: 'list', pathMatch: 'full'},
 ];

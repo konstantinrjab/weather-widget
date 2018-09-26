@@ -16,9 +16,9 @@ export class PlaceAddComponent implements OnInit {
   ngOnInit() {
   }
 
-  addTown(placeForm: NgForm) {
+  addTown(placeForm: NgForm): void {
     console.log(placeForm.value);
-    this.placeService.addPlace(placeForm.value).subscribe((res) => {
+    this.placeService.addTown(placeForm.value).subscribe((res) => {
       console.log(res);
     });
   }
