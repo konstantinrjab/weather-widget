@@ -3,7 +3,6 @@
       <p class="">{{town.name}}</p>
   </div>
   <div class="col-12" *ngIf="weather">
-    <p>{{weather.WeatherEntity.main}}</p>
+    <p>{{weather.main | json }}</p>
   </div>
 </div>
-{{town | json}}

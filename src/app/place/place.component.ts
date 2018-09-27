@@ -13,6 +13,7 @@ import {Weather} from '../models/weather.model';
 export class PlaceComponent implements OnInit {
   town: Town;
   weather: Weather;
+  error;
 
   constructor(
     private route: ActivatedRoute,
@@ -20,23 +21,23 @@ export class PlaceComponent implements OnInit {
     private weatherService: WeatherService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getTown();
+    // this.getWeather();
   }
 
   getTown(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.placeService.getTown(id)
-      .subscribe(town => this.town = town);
-    console.log(this.town);
-
-    this.getWeather();
+      .subscribe(town => { this.town = town; this.getWeather(); },
+        error => this.error = error,
+         );
   }
 
   getWeather(): void {
-    console.log(this.town);
     this.weatherService.getWeather(this.town.name)
-      .subscribe(weather => this.weather = weather);
+      .subscribe((weather: Weather) => this.weather = weather,
+        error => this.error = error);
     console.log(this.weather);
   }
 }
