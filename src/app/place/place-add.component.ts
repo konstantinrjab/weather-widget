@@ -9,6 +9,7 @@ import {PlaceService} from '../place.service';
 })
 export class PlaceAddComponent implements OnInit {
   protected townNameModel;
+  error;
 
   constructor(private placeService: PlaceService) {
   }
@@ -18,8 +19,12 @@ export class PlaceAddComponent implements OnInit {
 
   addTown(placeForm: NgForm): void {
     console.log(placeForm.value);
-    this.placeService.addTown(placeForm.value).subscribe((res) => {
+    this.placeService.addTown(placeForm.value)
+      .subscribe((res) => {
       console.log(res);
-    });
+    }, error => this.handleError);
+  }
+  handleError(error) {
+    console.log(error);
   }
 }

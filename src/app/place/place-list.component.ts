@@ -19,9 +19,8 @@ export class PlaceListComponent implements OnInit {
 
   getTowns() {
     this.placeService.getTowns()
-        .subscribe((data: Town[]) => {
-          this.places = data;
-          console.log(data);
-        });
+      .subscribe((data: Town[]) => {
+        this.places = data;
+      });
   }
 }

@@ -12,13 +12,12 @@ export class WeatherService {
   API_URL = 'http://api.openweathermap.org/data/2.5/weather?';
   token = '7a561e0fd6fb127d60e075752fe8d983';
 
-  constructor(private  http: HttpClient) {
+  constructor(private http: HttpClient) {
   }
 
   getWeather(name: string): Observable<Weather> {
     const url = `${this.API_URL}&q=${name}&appid=${this.token}`;
     return this.http.get<Weather>(url).pipe(
-      retry(3),
       catchError(this.handleError)
     );
   }
@@ -32,10 +31,14 @@ export class WeatherService {
       // The response body may contain clues as to what went wrong,
       console.error(
         `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
+        `error ${error.error.message}, ` +
+        `body was: ${Object.values(error.error)}`);
+      if (error.status === 404) {
+        return throwError('Town not found');
+      }
     }
     // return an observable with a user-facing error message
     return throwError(
       'Something bad happened; please try again later.');
-  };
+  }
 }

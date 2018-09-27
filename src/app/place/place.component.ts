@@ -30,7 +30,7 @@ export class PlaceComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.placeService.getTown(id)
       .subscribe(town => { this.town = town; this.getWeather(); },
-        error => this.error = error,
+        error => {this.error = error; console.log(error); },
          );
   }
 
@@ -38,6 +38,5 @@ export class PlaceComponent implements OnInit {
     this.weatherService.getWeather(this.town.name)
       .subscribe((weather: Weather) => this.weather = weather,
         error => this.error = error);
-    console.log(this.weather);
   }
 }

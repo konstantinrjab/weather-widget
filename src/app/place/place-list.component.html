@@ -1,11 +1,7 @@
-<div class="row" *ngFor="let place of places">
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <a routerLink="/place/{{place.id}}">
-          {{place.name}}
-        </a>
-      </div>
-    </div>
-  </div>
+<div class="list-group">
+  <button type="button" class="list-group-item list-group-item-action"
+          *ngFor="let place of places"
+          routerLink="/place/{{place.id}}">
+      {{place.name}}
+  </button>
 </div>
