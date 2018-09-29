@@ -8,19 +8,24 @@ import {Town} from '../models/town.model';
   styleUrls: ['./place-list.component.css']
 })
 export class PlaceListComponent implements OnInit {
-  protected places;
+  protected towns;
 
   constructor(private placeService: PlaceService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getTowns();
   }
 
-  getTowns() {
+  getTowns(): void {
     this.placeService.getTowns()
       .subscribe((data: Town[]) => {
-        this.places = data;
+        this.towns = data;
       });
+  }
+
+  delete(town): void {
+    this.placeService.deleteTown(town)
+      .subscribe((res) => this.getTowns());
   }
 }

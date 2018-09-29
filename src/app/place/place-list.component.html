@@ -1,7 +1,11 @@
-<div class="list-group">
-  <button type="button" class="list-group-item list-group-item-action"
-          *ngFor="let place of places"
-          routerLink="/place/{{place.id}}">
-      {{place.name}}
-  </button>
+<div class="row"  *ngFor="let town of towns">
+  <div class="col-12">
+    <div class="btn-group btn-group-lg pt-2 bp-2 w-100">
+      <button type="button" class="btn btn-light flex-grow-1"
+              routerLink="/place/{{town.id}}">
+        {{town.name}}
+      </button>
+      <button class="btn btn-danger" (click)="delete(town)">Delete</button>
+    </div>
+  </div>
 </div>

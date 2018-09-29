@@ -1,10 +1,21 @@
 <div class="row">
   <div class="col-12" *ngIf="town">
-    <p class="">{{town.name}}</p>
+    <h3 class="pb-3">
+      {{town.name}}
+      <i *ngIf="weather"
+         class="owf owf-2x {{getIconClass()}}"
+         style="position: absolute; top: -10px; margin-left: 20px"></i>
+    </h3>
   </div>
-  <div class="col-12" *ngIf="weather">
-    <p>{{weather.main | json }}</p>
+  <div class="col-6" *ngIf="weather">
+    <p>Weather: {{weather.weather[0].description}}</p>
+    <p>Temperature: {{(weather.main.temp-273.15).toFixed(1)}}&#8451;</p>
+    <p>Pressure: {{weather.main.pressure}} hPa</p>
+    <p>Humidity: {{weather.main.humidity}}%</p>
+  </div>
+  <div class="col-6">
+    <p>Wind speed: {{weather.wind.speed}} meter/sec</p>
+    <p>Wind cardinal direction: {{getCardinal(weather.wind.deg)}}</p>
   </div>
 </div>
-{{weather | json}}
 <p class="text-danger" *ngIf="error">{{error}}</p>

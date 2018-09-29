@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {PlaceService} from '../place.service';
 import {WeatherService} from '../weather.service';
@@ -28,6 +28,7 @@ export class PlaceAddComponent implements OnInit {
             this.placeService.addTown(placeForm.value)
               .subscribe((res2) => {
                 this.success = 'Successfully added!';
+                  console.log('S L');
                 }, error => {
                   this.handleError(error);
                 },
@@ -42,11 +43,10 @@ export class PlaceAddComponent implements OnInit {
     }
   }
 
-  handleError(error) {
+  handleError(error): void {
     if (typeof error === 'object') {
       error = Object.values(error);
     }
     this.error = error;
-    console.log(this.error);
   }
 }

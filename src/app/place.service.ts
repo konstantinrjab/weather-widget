@@ -1,45 +1,43 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Town} from './models/town.model';
-import {HttpHeaders} from '@angular/common/http';
 import {Observable, of, throwError} from 'rxjs';
 import {catchError, delay, retryWhen, take} from 'rxjs/operators';
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': 'my-auth-token'
-  })
-};
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class PlaceService {
-  API_URL = 'http://laravel-generator/public/api';
+  url = 'http://laravel-crud-api/api/towns';
 
   constructor(private  http: HttpClient) {
   }
 
   getTown(id: number): Observable<Town> {
-    const url = `${this.API_URL}/towns/${id}`;
+    const url = this.url + '/' + id;
     return this.http.get<Town>(url).pipe(
       catchError(this.handleError<Town>(`getTown id=${id}`))
     );
   }
 
   getTowns() {
-    return this.http.get(`${this.API_URL}/towns`).pipe(
+    return this.http.get(this.url).pipe(
       retryWhen(errors => errors.pipe(delay(1000), take(5))),
       catchError(this.handleError<Town>(`getTowns`))
     );
   }
 
   addTown(town: Town): Observable<Town> {
-    const url = `${this.API_URL}/towns`;
-    return this.http.post<Town>(url, town).pipe(
+    return this.http.post<Town>(this.url, town).pipe(
       catchError(this.handleError<Town>(`addTown`))
+    );
+  }
+
+  deleteTown(town: Town): Observable<Town> {
+    const url = this.url + '/' + town.id;
+    return this.http.delete<Town>(url).pipe(
+      catchError(this.handleError<Town>(`deleteTown`))
     );
   }
 

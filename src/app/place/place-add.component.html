@@ -6,12 +6,15 @@
     <div class="card-body">
       <h5 class="card-title">Town name</h5>
       <div class="form-group">
-        <label for="townName" class="card-text">Add town below</label>
+        <label for="townName" class="card-text">Insert city name below</label>
         <input required type="text" id="townName" class="form-control"
                [class.is-invalid]="townName.invalid && townName.touched || error"
                [(ngModel)]="townNameModel" name="townName"
                (keyup)="error = ''"
                #townName="ngModel">
+        <div class="text-success">
+          {{success}}
+        </div>
         <div class="invalid-feedback" *ngIf="townName.invalid && townName.touched">
           Please choose a username.
         </div>
@@ -20,7 +23,8 @@
         </div>
       </div>
       <button type="submit" class="btn btn-primary"
-              [disabled]="placeForm.invalid">Add</button>
+              [disabled]="placeForm.invalid">Add
+      </button>
     </div>
   </div>
 </form>
