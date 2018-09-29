@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Town} from '../models/town.model';
 import {WeatherService} from '../weather.service';
 import {Weather} from '../models/weather.model';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-place',
@@ -13,7 +14,7 @@ import {Weather} from '../models/weather.model';
 export class PlaceComponent implements OnInit {
   town: Town;
   weather: Weather;
-  error;
+  error: HttpErrorResponse;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,7 +31,7 @@ export class PlaceComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.placeService.getTown(id)
       .subscribe(town => { this.town = town; this.getWeather(); },
-        error => {this.error = error; console.log(error); },
+        error => {this.error = error; },
          );
   }
 

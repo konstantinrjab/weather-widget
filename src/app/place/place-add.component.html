@@ -8,12 +8,15 @@
       <div class="form-group">
         <label for="townName" class="card-text">Add town below</label>
         <input required type="text" id="townName" class="form-control"
-               [class.is-invalid]="townName.invalid && townName.touched"
-               [class.is-valid]="townName.valid && townName.touched"
+               [class.is-invalid]="townName.invalid && townName.touched || error"
                [(ngModel)]="townNameModel" name="townName"
+               (keyup)="error = ''"
                #townName="ngModel">
-        <div class="invalid-feedback d-block" *ngIf="townName.invalid && townName.touched">
+        <div class="invalid-feedback" *ngIf="townName.invalid && townName.touched">
           Please choose a username.
+        </div>
+        <div class="invalid-feedback" *ngIf="error && townName.touched">
+          {{ error }}
         </div>
       </div>
       <button type="submit" class="btn btn-primary"
