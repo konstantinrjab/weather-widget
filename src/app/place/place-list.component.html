@@ -1,4 +1,5 @@
-<div class="row"  *ngFor="let town of towns">
+<app-place-search [towns]="towns"></app-place-search>
+<div class="row" *ngFor="let town of towns">
   <div class="col-12">
     <div class="btn-group btn-group-lg pt-2 bp-2 w-100">
       <button type="button" class="btn btn-light flex-grow-1"

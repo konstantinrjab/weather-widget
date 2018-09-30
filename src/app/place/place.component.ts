@@ -47,7 +47,6 @@ export class PlaceComponent implements OnInit {
 
   getIconClass() {
     const now = Date.now() / 1000;
-    console.log(now);
     return 'owf-' + this.weather.weather[0].id
       + (now > +this.weather.sys.sunrise && now < +this.weather.sys.sunset ? '-d' : '-n');
   }

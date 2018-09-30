@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {PlaceService} from '../place.service';
 import {Town} from '../models/town.model';
+import 'babel-polyfill';
 
 @Component({
   selector: 'app-place-list',
   templateUrl: './place-list.component.html',
-  styleUrls: ['./place-list.component.css']
+  styleUrls: ['./place-list.component.css'],
 })
 export class PlaceListComponent implements OnInit {
   protected towns;
