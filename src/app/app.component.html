@@ -1,18 +1,31 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div>
-  <h1 class="text-center">
-    {{ title }}
-  </h1>
+<div class="container-fluid bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <nav class="navbar navbar-expand-sm navbar-light">
+          <a class="navbar-brand" routerLink="/">{{ title }}</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+              <li [routerLinkActive]="['active']" class="nav-item">
+                <a class="nav-link" routerLink="/list">List of cities</a>
+              </li>
+              <li [routerLinkActive]="['active']" class="nav-item" aria-current="page">
+                <a class="nav-link" routerLink="/add">Add city</a>
+              </li>
+            </ul>
+          </div>
+
+        </nav>
+      </div>
+    </div>
+  </div>
 </div>
-<nav class="navbar pl-0" aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a routerLink="/list">List of places</a>
-    </li>
-    <li class="breadcrumb-item" aria-current="page">
-      <a routerLink="/add">Add place</a>
-    </li>
-  </ol>
-</nav>
-<router-outlet></router-outlet>
+<div class="container pt-5">
+  <router-outlet></router-outlet>
+</div>
 

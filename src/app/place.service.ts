@@ -9,6 +9,7 @@ import {catchError, delay, retryWhen, take} from 'rxjs/operators';
 })
 
 export class PlaceService {
+  // 104.248.34.172/
   url = 'http://laravel-crud-api/api/towns';
 
   constructor(private  http: HttpClient) {

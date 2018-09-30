@@ -4,6 +4,10 @@
     <input id="searchBox" class="form-control" [(ngModel)]="searchText" />
   </div>
 
+  <p *ngIf="towns && towns.length == 0">
+    Nothing here yet! You can add cities <a routerLink="/add">here</a>.
+  </p>
+
   <app-place-list *ngFor="let town of towns | searchTown : searchText"
   [town]="town" (deleteEvent)="getTowns()"></app-place-list>
 

@@ -10,21 +10,27 @@
         <input required type="text" id="townName" class="form-control"
                [class.is-invalid]="townName.invalid && townName.touched || error"
                [(ngModel)]="townNameModel" name="townName"
-               (keyup)="error = ''"
+               (keyup)="error = ''; success = ''"
                #townName="ngModel" value="{{townNameModel | titlecase}}">
         <div class="text-success">
           {{success}}
         </div>
         <div class="invalid-feedback" *ngIf="townName.invalid && townName.touched">
-          Please choose a username.
+          Please enter city name.
         </div>
         <div class="invalid-feedback" *ngIf="error && townName.touched">
           {{ error }}
         </div>
       </div>
-      <button type="submit" class="btn btn-primary"
-              [disabled]="placeForm.invalid">Add
-      </button>
+      <div class="d-flex justify-content-between">
+        <button type="submit" class="btn btn-primary"
+                [disabled]="placeForm.invalid">Add
+        </button>
+        <button type="button" class="btn btn-outline-info"
+                routerLink="/">Go to list
+        </button>
+      </div>
+
     </div>
   </div>
 
