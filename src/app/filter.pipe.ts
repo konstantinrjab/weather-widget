@@ -6,9 +6,8 @@ import {Town} from './models/town.model';
 })
 export class FilterPipe implements PipeTransform {
   transform(towns: Town[], searchText: string): any[] {
-    if (!towns || !searchText) {
-      return [];
-    }
+    if (!towns) return [];
+    if (!searchText) return towns;
     searchText = searchText.toString().toLowerCase();
     return towns.filter(function (town: Town) {
       return town.name.toLowerCase().includes(searchText);

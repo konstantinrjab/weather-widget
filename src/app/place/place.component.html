@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-12" *ngIf="town">
     <h3 class="pb-3">
-      {{town.name}}
+      {{town.name | titlecase}}
       <i *ngIf="weather"
          class="owf owf-2x {{getIconClass()}}"
          style="position: absolute; top: -10px; margin-left: 20px"></i>

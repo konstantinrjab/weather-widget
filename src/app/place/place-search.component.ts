@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Subject} from 'rxjs';
-import 'babel-polyfill';
+import {Component, OnInit} from '@angular/core';
+import {PlaceService} from '../place.service';
+import {Town} from '../models/town.model';
 
 @Component({
   selector: 'app-place-search',
@@ -8,16 +8,20 @@ import 'babel-polyfill';
   styleUrls: ['./place-search.component.css'],
 })
 export class PlaceSearchComponent implements OnInit {
-  @Input() towns: string;
   searchText;
-  constructor() {
+  protected towns;
+
+  constructor(private placeService: PlaceService) {
   }
 
   ngOnInit(): void {
+    this.getTowns();
   }
 
-  search(name: string) {
-    console.log(name);
-    this.searchText.next(name);
+  protected getTowns(): void {
+    this.placeService.getTowns()
+      .subscribe((data: Town[]) => {
+        this.towns = data;
+      });
   }
 }

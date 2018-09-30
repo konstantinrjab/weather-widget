@@ -10,10 +10,9 @@ import {PlaceAddComponent} from './place/place-add.component';
 import {HttpClientModule} from '@angular/common/http';
 import { PlaceSearchComponent } from './place/place-search.component';
 import {FilterPipe} from './filter.pipe';
-import 'babel-polyfill';
 
 const appRoutes: Routes = [
-  {path: 'list', component: PlaceListComponent},
+  {path: 'list', component: PlaceSearchComponent},
   {path: 'place/:id', component: PlaceComponent},
   {path: 'add', component: PlaceAddComponent},
   {path: '', redirectTo: 'list', pathMatch: 'full'},

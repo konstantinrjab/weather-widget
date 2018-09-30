@@ -4,11 +4,7 @@
     <input id="searchBox" class="form-control" [(ngModel)]="searchText" />
   </div>
 
-  <ul class="search-result">
-    <li *ngFor="let town of towns | searchTown : searchText" >
-      <a routerLink="/place/{{town.id}}">
-        {{town.name}}
-      </a>
-    </li>
-  </ul>
+  <app-place-list *ngFor="let town of towns | searchTown : searchText"
+  [town]="town" (deleteEvent)="getTowns()"></app-place-list>
+
 </div>

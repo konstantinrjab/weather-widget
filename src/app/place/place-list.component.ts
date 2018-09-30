@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {PlaceService} from '../place.service';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {Town} from '../models/town.model';
-import 'babel-polyfill';
+import {PlaceService} from '../place.service';
+import {EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-place-list',
@@ -9,24 +9,17 @@ import 'babel-polyfill';
   styleUrls: ['./place-list.component.css'],
 })
 export class PlaceListComponent implements OnInit {
-  protected towns;
+  @Input() town: Town;
+  @Output() deleteEvent = new EventEmitter();
 
   constructor(private placeService: PlaceService) {
   }
 
   ngOnInit(): void {
-    this.getTowns();
   }
 
-  getTowns(): void {
-    this.placeService.getTowns()
-      .subscribe((data: Town[]) => {
-        this.towns = data;
-      });
-  }
-
-  delete(town): void {
+  delete(town: Town): void {
     this.placeService.deleteTown(town)
-      .subscribe((res) => this.getTowns());
+      .subscribe((res) => this.deleteEvent.emit());
   }
 }

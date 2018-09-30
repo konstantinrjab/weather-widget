@@ -21,14 +21,12 @@ export class PlaceAddComponent implements OnInit {
   }
 
   addTown(placeForm: NgForm): void {
-    console.log(placeForm.value);
     if (!this.error) {
       this.weatherService.getWeather(this.townNameModel)
         .subscribe((res) => {
             this.placeService.addTown(placeForm.value)
               .subscribe((res2) => {
                 this.success = 'Successfully added!';
-                  console.log('S L');
                 }, error => {
                   this.handleError(error);
                 },
