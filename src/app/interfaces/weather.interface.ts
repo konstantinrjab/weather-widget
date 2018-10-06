@@ -1,5 +1,7 @@
-export interface Weather {
-  coord: Coord;
+import {CoordInterface} from './coord.interface';
+
+export interface WeatherInterface {
+  coord: CoordInterface;
   weather?: (WeatherEntity)[] | null;
   base: string;
   main: Main;
@@ -10,10 +12,6 @@ export interface Weather {
   id: number;
   name: string;
   cod: number;
-}
-export interface Coord {
-  lon: number;
-  lat: number;
 }
 export interface WeatherEntity {
   id: number;

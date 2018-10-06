@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {PlaceService} from '../place.service';
-import {WeatherService} from '../weather.service';
+import {PlaceService} from '../services/place.service';
+import {WeatherService} from '../services/weather.service';
 
 @Component({
   selector: 'app-place-add',

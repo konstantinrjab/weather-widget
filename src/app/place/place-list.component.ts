@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
-import {Town} from '../models/town.model';
-import {PlaceService} from '../place.service';
+import {TownModel} from '../models/town.model';
+import {PlaceService} from '../services/place.service';
 import {EventEmitter} from '@angular/core';
 
 @Component({
@@ -9,7 +9,7 @@ import {EventEmitter} from '@angular/core';
   styleUrls: ['./place-list.component.css'],
 })
 export class PlaceListComponent implements OnInit {
-  @Input() town: Town;
+  @Input() town: TownModel;
   @Output() deleteEvent = new EventEmitter();
 
   constructor(private placeService: PlaceService) {
@@ -18,7 +18,7 @@ export class PlaceListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  delete(town: Town): void {
+  delete(town: TownModel): void {
     this.placeService.deleteTown(town)
       .subscribe((res) => this.deleteEvent.emit());
   }

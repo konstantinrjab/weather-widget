@@ -2,22 +2,19 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Observable, of, throwError} from 'rxjs';
 import {catchError, retry, tap} from 'rxjs/operators';
-import {Weather} from './models/weather.model';
+import {WeatherInterface} from '../interfaces/weather.interface';
+import {environment} from '../../environments/environment';
 
-@Injectable({
-  providedIn: 'root'
-})
-
+@Injectable()
 export class WeatherService {
-  API_URL = 'http://api.openweathermap.org/data/2.5/weather?';
-  token = '7a561e0fd6fb127d60e075752fe8d983';
+
 
   constructor(private http: HttpClient) {
   }
 
-  getWeather(name: string): Observable<Weather> {
-    const url = `${this.API_URL}&q=${name}&appid=${this.token}`;
-    return this.http.get<Weather>(url).pipe(
+  public getWeather(name: string): Observable<WeatherInterface> {
+    const url = `${environment.API_URL}&q=${name}&appid=${environment.token}`;
+    return this.http.get<WeatherInterface>(url).pipe(
       catchError(this.handleError)
     );
   }
