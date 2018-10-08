@@ -9,8 +9,8 @@ import {WeatherService} from '../../services/weather.service';
   styleUrls: ['./add-place.component.sass']
 })
 export class AddPlaceComponent implements OnInit {
-  protected townNameModel;
-  public error: Array<string>;
+  public townNameModel;
+  public error: string;
   public success: string;
 
   constructor(private placeService: PlaceService,

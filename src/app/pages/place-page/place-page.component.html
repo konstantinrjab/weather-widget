@@ -18,6 +18,13 @@
   <div class="col-6">
     <p>Wind speed: {{weather.wind.speed}} meter/sec</p>
     <p>Wind cardinal direction: {{getCardinal(weather.wind.deg)}}</p>
+    <p>Latitude: {{weather.coord.lat}}</p>
+    <p>Longitude: {{weather.coord.lon}}</p>
   </div>
 </div>
 <p class="text-danger" *ngIf="error">{{error}}</p>
+<div class="row">
+  <div class="col">
+    <app-map [coord]="weather.coord"></app-map>
+  </div>
+</div>

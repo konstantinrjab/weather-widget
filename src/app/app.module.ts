@@ -11,6 +11,8 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import {FilterPipe} from './pipes/filter.pipe';
 import {PlaceService} from './services/place.service';
 import {WeatherService} from './services/weather.service';
+import { MapComponent } from './map/map.component';
+import {AgmCoreModule} from '@agm/core';
 
 const appRoutes: Routes = [
   {path: 'list', component: MainPageComponent},
@@ -25,6 +27,7 @@ const COMPONENTS = [
   PlaceListComponent,
   AddPlaceComponent,
   MainPageComponent,
+  MapComponent
 ];
 
 const PIPES = [
@@ -34,13 +37,17 @@ const PIPES = [
 @NgModule({
   declarations: [
     ...COMPONENTS,
-    ...PIPES
+    ...PIPES,
+    MapComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCzQDjwhBysBzA3-OTf0UqrF5q_XnMStBQ'
+    })
   ],
   providers: [
     PlaceService,

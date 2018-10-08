@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   placeApiUrl: 'http://laravel-crud-api/api/towns',
   weatherApiUrl: 'http://api.openweathermap.org/data/2.5/weather?',
+  mapUrl: 'https://www.google.com/maps/@',
   token: '7db64a51b8c40835633995b2822fe9c8',
 };
 
