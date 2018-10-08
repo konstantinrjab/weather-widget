@@ -1,44 +1,41 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Town} from './models/town.model';
+import {TownModel} from '../models/town.model';
 import {Observable, of, throwError} from 'rxjs';
 import {catchError, delay, retryWhen, take} from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
-
+@Injectable()
 export class PlaceService {
   // 104.248.34.172/
-  url = 'http://104.248.34.172/laravel-crud-api/api/towns';
+  url = 'http://laravel-crud-api/api/towns'; // todo env
 
   constructor(private  http: HttpClient) {
   }
 
-  getTown(id: number): Observable<Town> {
+  getTown(id: number): Observable<TownModel> {
     const url = this.url + '/' + id;
-    return this.http.get<Town>(url).pipe(
-      catchError(this.handleError<Town>(`getTown id=${id}`))
+    return this.http.get<TownModel>(url).pipe( // todo use interceptor
+      catchError(this.handleError<TownModel>(`getTown id=${id}`))
     );
   }
 
   getTowns() {
     return this.http.get(this.url).pipe(
       retryWhen(errors => errors.pipe(delay(1000), take(5))),
-      catchError(this.handleError<Town>(`getTowns`))
+      catchError(this.handleError<TownModel>(`getTowns`))
     );
   }
 
-  addTown(town: Town): Observable<Town> {
-    return this.http.post<Town>(this.url, town).pipe(
-      catchError(this.handleError<Town>(`addTown`))
+  addTown(town: TownModel): Observable<TownModel> {
+    return this.http.post<TownModel>(this.url, town).pipe(
+      catchError(this.handleError<TownModel>(`addTown`))
     );
   }
 
-  deleteTown(town: Town): Observable<Town> {
+  deleteTown(town: TownModel): Observable<TownModel> {
     const url = this.url + '/' + town.id;
-    return this.http.delete<Town>(url).pipe(
-      catchError(this.handleError<Town>(`deleteTown`))
+    return this.http.delete<TownModel>(url).pipe(
+      catchError(this.handleError<TownModel>(`deleteTown`))
     );
   }
 

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {PlaceService} from '../place.service';
-import {Town} from '../models/town.model';
+import {PlaceService} from '../services/place.service';
+import {TownModel} from '../models/town.model';
 
 @Component({
   selector: 'app-place-search',
@@ -20,7 +20,7 @@ export class PlaceSearchComponent implements OnInit {
 
   protected getTowns(): void {
     this.placeService.getTowns()
-      .subscribe((data: Town[]) => {
+      .subscribe((data: TownModel[]) => {
         this.towns = data;
       });
   }

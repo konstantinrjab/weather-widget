@@ -1,4 +1,4 @@
-export class Town {
+export class TownModel {
   id: number;
   name: string;
   created_at: string;

@@ -1,15 +1,15 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {Town} from './models/town.model';
+import {TownModel} from '../models/town.model';
 
 @Pipe({
   name: 'searchTown'
 })
 export class FilterPipe implements PipeTransform {
-  transform(towns: Town[], searchText: string): any[] {
+  transform(towns: TownModel[], searchText: string): any[] {
     if (!towns) return [];
     if (!searchText) return towns;
     searchText = searchText.toString().toLowerCase();
-    return towns.filter(function (town: Town) {
+    return towns.filter(function (town: TownModel) {
       return town.name.toLowerCase().includes(searchText);
     });
   }
