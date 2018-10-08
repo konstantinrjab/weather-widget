@@ -4,17 +4,18 @@ import {MainInterface} from './main.interface';
 import {WindInterface} from './wind.interface';
 import {CloudsInterface} from './clouds.interface';
 import {SysInterface} from './sys.interface';
+import {CardinalEnum} from '../enums/cardinal.enum';
 
-export interface WeatherInterface {
-  coord: CoordInterface;
-  weather?: (WeatherEntityInterface)[] | null;
-  base: string;
-  main: MainInterface;
-  wind: WindInterface;
-  clouds: CloudsInterface;
-  dt: number;
-  sys: SysInterface;
-  id: number;
-  name: string;
-  cod: number;
+export class WeatherInterface {
+  public coord: CoordInterface;
+  public weather?: (WeatherEntityInterface)[] | null;
+  public base: string;
+  public main: MainInterface;
+  public wind: WindInterface;
+  public clouds: CloudsInterface;
+  public dt: number;
+  public sys: SysInterface;
+  public id: number;
+  public name: string;
+  public cod: number;
 }

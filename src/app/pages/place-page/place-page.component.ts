@@ -32,11 +32,10 @@ export class PlacePageComponent implements OnInit {
       + (now > +this.weather.sys.sunrise && now < +this.weather.sys.sunset ? '-d' : '-n');
   }
 
-  public getCardinal(angle): CardinalEnum {
+  public getCardinal(angleVal): CardinalEnum {
     const directions = 8;
-
     const degree = 360 / directions;
-    angle = angle + degree / 2;
+    const angle = angleVal + degree / 2;
 
     if (angle >= 0 && angle < degree) {
       return CardinalEnum.north;

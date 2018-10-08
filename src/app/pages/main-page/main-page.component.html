@@ -1,7 +1,7 @@
 <div id="search-component">
   <div class="form-group">
     <label for="searchBox">Search added cities</label>
-    <input id="searchBox" class="form-control" [(ngModel)]="searchText" />
+    <input id="searchBox" class="form-control" [(ngModel)]="searchText" value="{{searchText | titlecase}}"/>
   </div>
 
   <p *ngIf="towns && towns.length == 0">

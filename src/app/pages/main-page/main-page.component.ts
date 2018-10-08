@@ -9,7 +9,7 @@ import {TownInterface} from '../../interfaces/town.interface';
 })
 export class MainPageComponent implements OnInit {
   public searchText;
-  protected towns;
+  public towns;
 
   constructor(private placeService: PlaceService) {
   }
