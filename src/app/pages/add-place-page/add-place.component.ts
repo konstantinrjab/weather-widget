@@ -1,26 +1,26 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {PlaceService} from '../services/place.service';
-import {WeatherService} from '../services/weather.service';
+import {PlaceService} from '../../services/place.service';
+import {WeatherService} from '../../services/weather.service';
 
 @Component({
   selector: 'app-place-add',
-  templateUrl: './place-add.component.html',
-  styleUrls: ['./place-add.component.css']
+  templateUrl: './add-place.component.html',
+  styleUrls: ['./add-place.component.sass']
 })
-export class PlaceAddComponent implements OnInit {
+export class AddPlaceComponent implements OnInit {
   protected townNameModel;
-  error: Array<string>;
-  success: string;
+  public error: Array<string>;
+  public success: string;
 
   constructor(private placeService: PlaceService,
               private weatherService: WeatherService) {
   }
 
-  ngOnInit() {
+  public ngOnInit() {
   }
 
-  addTown(placeForm: NgForm): void {
+  public addTown(placeForm: NgForm): void {
     if (!this.error) {
       this.weatherService.getWeather(this.townNameModel)
         .subscribe((res) => {
@@ -41,7 +41,7 @@ export class PlaceAddComponent implements OnInit {
     }
   }
 
-  handleError(error): void {
+  private handleError(error): void {
     if (typeof error === 'object') {
       error = Object.values(error);
     }

@@ -1,43 +1,20 @@
 import {CoordInterface} from './coord.interface';
+import {WeatherEntityInterface} from './weatherEntity.interface';
+import {MainInterface} from './main.interface';
+import {WindInterface} from './wind.interface';
+import {CloudsInterface} from './clouds.interface';
+import {SysInterface} from './sys.interface';
 
 export interface WeatherInterface {
   coord: CoordInterface;
-  weather?: (WeatherEntity)[] | null;
+  weather?: (WeatherEntityInterface)[] | null;
   base: string;
-  main: Main;
-  wind: Wind;
-  clouds: Clouds;
+  main: MainInterface;
+  wind: WindInterface;
+  clouds: CloudsInterface;
   dt: number;
-  sys: Sys;
+  sys: SysInterface;
   id: number;
   name: string;
   cod: number;
-}
-export interface WeatherEntity {
-  id: number;
-  main: string;
-  description: string;
-  icon: string;
-}
-export interface Main {
-  temp: number;
-  pressure: number;
-  humidity: number;
-  temp_min: number;
-  temp_max: number;
-}
-export interface Wind {
-  speed: number;
-  deg: number;
-}
-export interface Clouds {
-  all: number;
-}
-export interface Sys {
-  type: number;
-  id: number;
-  message: number;
-  country: string;
-  sunrise: number;
-  sunset: number;
 }

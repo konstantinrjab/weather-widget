@@ -1,4 +1,4 @@
-export class TownModel {
+export interface TownInterface {
   id: number;
   name: string;
   created_at: string;

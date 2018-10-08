@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PlaceService} from '../../services/place.service';
 import {ActivatedRoute} from '@angular/router';
-import {TownModel} from '../../models/town.model';
+import {TownInterface} from '../../interfaces/town.interface';
 import {WeatherService} from '../../services/weather.service';
 import {WeatherInterface} from '../../interfaces/weather.interface';
 import {CardinalEnum} from '../../enums/cardinal.enum';
@@ -12,7 +12,7 @@ import {CardinalEnum} from '../../enums/cardinal.enum';
   styleUrls: ['./place-page.component.sass']
 })
 export class PlacePageComponent implements OnInit {
-  public town: TownModel;
+  public town: TownInterface;
   public weather: WeatherInterface;
   public error: Array<string>;
 
@@ -32,9 +32,7 @@ export class PlacePageComponent implements OnInit {
       + (now > +this.weather.sys.sunrise && now < +this.weather.sys.sunset ? '-d' : '-n');
   }
 
-  // todo make it cardinal type only
-  // todo make it cardinal enum only
-  public getCardinal(angle): any {
+  public getCardinal(angle): CardinalEnum {
     const directions = 8;
 
     const degree = 360 / directions;
@@ -44,27 +42,27 @@ export class PlacePageComponent implements OnInit {
       return CardinalEnum.north;
     }
     if (angle >= degree && angle < 2 * degree) {
-      return 'NE';
+      return CardinalEnum.northEast;
     }
     if (angle >= 2 * degree && angle < 3 * degree) {
-      return 'E';
+      return CardinalEnum.east;
     }
     if (angle >= 3 * degree && angle < 4 * degree) {
-      return 'SE';
+      return CardinalEnum.southEast;
     }
     if (angle >= 4 * degree && angle < 5 * degree) {
-      return 'S';
+      return CardinalEnum.south;
     }
     if (angle >= 5 * degree && angle < 6 * degree) {
-      return 'SW';
+      return CardinalEnum.southWest;
     }
     if (angle >= 6 * degree && angle < 7 * degree) {
-      return 'W';
+      return CardinalEnum.west;
     }
     if (angle >= 7 * degree && angle < 8 * degree) {
-      return 'NW';
+      return CardinalEnum.northWest;
     }
-    return 'N';
+    return CardinalEnum.error;
   }
 
   private getTown(): void {
